@@ -1,0 +1,23 @@
+// ------ MAIN
+$rem      : 16px;
+$line     : 1.5;
+$bl       : $line*$rem;
+
+// ------ LAYOUT
+$layMax   : 1344px;
+$layGap   : 48px;
+// $layMax   : 1076px;
+// $layGap   : 39px;
+
+//$layMax   : $layMax * 4 / 5;
+//$layGap   : $layGap * 4 / 5;
+
+// ------ GRID
+$gapFix   : 48px;
+//$gapFix   : $gapFix * 4 / 5;
+$gapFlu   : 4%;
+// ------ COLORS / FONTS
+$red      : #e74c3c;
+$green    : #2ecc71;
+$dark     : #1d1e22;
+$font     : "Arial";

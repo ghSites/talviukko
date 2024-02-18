@@ -1,0 +1,30 @@
+---
+const { title, menu } = Astro.props;
+
+// import '../styles/global.css';
+import Menu from '@components/Menu/Menu.astro';
+
+// const pgs = await Astro.glob('@pages/**/*.*');
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+	</head>
+	<body>
+		<Menu />
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--red   : 'red';
+		--green : 'green';
+		--blue  : 'teal';
+	}
+</style>

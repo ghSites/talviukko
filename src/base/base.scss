@@ -1,0 +1,180 @@
+@use 'sass:math';
+@import "_config.scss";
+
+// === RESET ===
+* {margin: 0; padding: 0; box-sizing: border-box; line-height:$line;}
+li {list-style: none;}
+html {font-size: $rem; font-family: $font; color:$dark}
+
+// === UTILS ===
+.inb {display: inline-block; vertical-align: top;}
+.abs {position: absolute; z-index: -1; left: 0; top: 0; right: 0; bottom: 0;}
+.rel {position: relative;}
+.cnt {display: flex; justify-content: center; align-items: center;}
+
+%-w12 {width:50%;}
+%-w14 {width:25%;}
+%-w23 {width:66.666666%;}
+%-w23 {width:33.333333%;}
+
+.-w12 {@extend %-w12;}
+.-w14 {@extend %-w14;}
+.-w23 {width:66.666666%;}
+.-w13 {width:33.333333%;}
+
+// === LAYOUT ===
+html, body {height:100%;}
+#app {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+header, main, footer {width:100%}
+header {}
+main {flex: 1;}
+footer {}
+
+// LAYOUT BLOCKS
+.lim, #app {
+  max-width: $layMax; margin: 0 auto;
+  padding-left: $layGap; padding-right: $layGap;
+}
+.unlim {
+  width: 100vw; position: relative;
+  left: 50%; transform: translateX(-50%);
+}
+
+// === GRID ===
+@mixin gap-f($gap) {
+    $compensation: $gap;
+    margin-left: -$compensation;
+    & > .Cell, & > li {margin-left: 0; border-left: $gap solid transparent;}
+    &.-eq2 > .Cell, &.-eq2 > li, & > .Cell.-w12 {width:50%;}
+    &.-eq3 > .Cell, &.-eq3 > li, & > .Cell.-w13 {width:33.33333333%;}
+    &.-eq4 > .Cell, &.-eq4 > li, & > .Cell.-w14 {width:25%;}
+    & > .Cell.-w23 {width:66.66666666%;}
+    & > .Cell.-w34 {width:75%;}
+}
+
+@mixin gap-p($gap) {
+    // $compensation: percentage(100% / (100% - $gap)) - 100%;
+    $compensation: math.div(100%, 100% - $gap) - 100%;
+    margin-left: -$compensation;
+    & > .Cell, & > li {margin-left: $gap; border-left:0;}
+    &.-eq2 > .Cell, &.-eq2 > li, & > .Cell.-w12 {width:50%-$gap;}
+    &.-eq3 > .Cell, &.-eq3 > li, & > .Cell.-w13 {width:33.33333333%-$gap;}
+    &.-eq4 > .Cell, &.-eq4 > li, & > .Cell.-w14 {width:25%-$gap;}
+    & > .Cell.-w23 {width:66.66666666%-$gap;}
+    & > .Cell.-w34 {width:75%-$gap;}
+}
+
+// COMPONENT:
+.Grid {
+  display:flex;
+  flex-wrap: wrap;
+  & > .Cell, & > li {
+    font-size: 1rem;
+    @extend .inb;
+    margin-bottom: $bl*1.5;
+    margin-bottom: $bl
+  }
+}
+
+// MODIFICATORS:
+.Grid.-f {@include gap-f($gapFix);}
+.Grid.-p {@include gap-p($gapFlu);}
+.Grid.-j {
+  display: block;
+  text-align: justify;
+  line-height: 0;
+  & > .Cell, & > li {line-height: $bl;}
+  &:after {
+    @extend .inb;
+    content: ""; width: 100%; height: 0px;
+    //overflow: hidden; visibility: hidden;
+  }
+}
+
+// GRID CELL WIDTHS:
+.Grid.-f.-eq2 >.Cell, .Grid.-f.-eq2 > li {@extend %-w12}
+.Grid.-f.-eq4 > .Cell, .Grid.-f.-eq4 > li {@extend %-w14}
+
+.Grid.-p.-eq2 > .Cell, .Grid.-p.-eq2 > li {width: 50%-$gapFlu;}
+.Grid.-p.-eq4 > .Cell, .Grid.-p.-eq4 > li {width: 25%-$gapFlu}
+
+// Grid modificator -debug
+.Grid.-debug > li,
+.Grid.-debug > .Cell {
+  position:relative;
+  &:before {
+    content: ''; position:absolute;
+    left:0; right:0; top:0; bottom:0;
+    background: rgba(#f00, 0.2);
+    outline:1px solid #f00;
+  }
+}
+
+
+
+
+// @media (max-resolution: 120dpi) {
+//   * {
+//     color: red;
+//     #app {zoom:0.8}
+//   }
+// }
+
+html:before {
+  content: '';
+  position: fixed;
+  width:100%;
+  height: 100%;
+
+  --s: 76px; /* control the size */
+  --_c:#0000,#fff 1deg 79deg,#0000 81deg;
+  --g0:conic-gradient(from 140deg at 50% 87.5% ,var(--_c));
+  --g1:conic-gradient(from 140deg at 50% 81.25%,var(--_c));
+  --g2:conic-gradient(from 140deg at 50% 75%   ,var(--_c));
+  --g3:conic-gradient(at 10% 20%,#0000 75%,#fff 0);
+  background:
+    var(--g0) 0 calc(var(--s)/-4),var(--g0) var(--s) calc(3*var(--s)/4),
+    var(--g1) ,var(--g1) var(--s) var(--s),
+    var(--g2) 0 calc(var(--s)/ 4),var(--g2) var(--s) calc(5*var(--s)/4),
+    var(--g3) calc( var(--s)/-10) var(--s),
+    var(--g3) calc(9*var(--s)/10) calc(2*var(--s)),
+    repeating-conic-gradient(from 45deg,#a31e39 0 25%,#31570e 0 50%);
+  background-size: calc(2*var(--s)) calc(2*var(--s));
+}
+
+body:before {
+  opacity: 0.0;
+  content:'';
+  background: #2b586b;
+  position: fixed;
+  top:0;
+  width:100%;
+  height: 100%;
+}
+
+#app {
+  height: 500%;
+  background: url('../assets/bg.png') #fff no-repeat;
+
+  // box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+  box-shadow: 50px 0px 40px -45px rgba(0,0,0,0.75), -25px 0px 20px -20px rgba(0,0,0,0.75);
+
+// outline:2px solid rgba(0, 0, 0, 0.75);
+// outline:2px solid rgba(255, 255, 255, 0.75);
+
+  // box-shadow:
+  //   rgba(0, 0, 0, 0.5) 0px 54px 55px,
+  //   rgba(0, 0, 0, 0.25) 0px -12px 30px,
+  //   rgba(0, 0, 0, 0.25) 0px 4px 6px,
+  //   rgba(0, 0, 0, 0.36) 0px 12px 13px,
+  //   rgba(0, 0, 0, 0.2) 0px -3px 5px;
+
+    // box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}

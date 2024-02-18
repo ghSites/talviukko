@@ -1,0 +1,60 @@
+---
+const pages = await Astro.glob('@pages/**/*.*');
+
+import List from '@components/Menu/List.astro';
+
+// function renderSubMenu(items) {
+//   return items.map(item => (<li>xxx</li>));
+// }
+
+// function convertToHierarchy(pages) {
+//   const parents = {};
+//   for (const page of pages) {
+//     const urlParts = page.url.split('/').filter(part => part !== '');
+//     let currentLevel = parents;
+//     for (const part of urlParts) {
+//       if (!currentLevel[part]) {currentLevel[part] = {}}
+//       currentLevel = currentLevel[part];
+//     }
+//     currentLevel.page = { title: page.title, url: page.url };
+//   }
+
+//   function convertLevel(level) {
+//     const keys = Object.keys(level).filter(key => key !== 'page');
+//     const sub = keys.map(key => convertLevel(level[key]));
+//     return level.page ? {...level.page, sub: sub} : sub;
+//   }
+
+//   return convertLevel(parents);
+// }
+
+function convertToHierarchy(pages) {
+  let menu = {title: '', url: '', menu: {}};
+	for (const page of pages) {
+			const urlParts = page.url.split('/');
+      let cur = menu;
+      for (let i=1; i<urlParts.length; i++) {
+        if (cur.menu[urlParts[i]] === undefined) {
+          cur.menu[urlParts[i]] = {title: '', url: '', menu: {}}
+        }
+        cur = cur.menu[urlParts[i]];
+      }
+      cur.title = page.title;
+      cur.url   = page.url;
+	}
+	return menu;
+}
+
+const menu = convertToHierarchy(pages);
+---
+
+<!-- {pages.map((data) => <li>{data.title}</li>)} -->
+<h3>Menu</h3>
+<!-- <nav>
+	<List {menu} />
+</nav> -->
+<hr />
+<!-- <pre>{JSON.stringify(pages, null, 2)}</pre> -->
+<pre>{JSON.stringify(menu, null, 2)}</pre>
+<!-- <hr /> -->
+<!-- <pre>{JSON.stringify(pags, null, 2)}</pre> -->
