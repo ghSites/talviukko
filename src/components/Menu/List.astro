@@ -2,17 +2,13 @@
 const { menu } = Astro.props;
 ---
 
-<pre>{JSON.stringify(menu, null, 2)}</pre>
-
 <ul>
 	{
-		// menu.map((item) => (
-		// 	<li>
-		// 		<a href={item.url}>{item.title}</a>
-		// 		{item.menu.length > 0 && <Astro.self menu={item.menu} />}
-		// 	</li>
-		// ))
-
-
+		Object.values(menu.menu).map((item) => (
+			<li>
+				<a href={item.url}>{item.title}</a>
+				{Object.keys(item.menu).length > 0 && <Astro.self menu={item} />}
+			</li>
+		))
 	}
 </ul>
