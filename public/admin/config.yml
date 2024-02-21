@@ -3,7 +3,7 @@ backend:
   repo: talvi-ukko/talvi-ukko.github.io
   branch: main
 
-media_folder: 'static/assets'
-media_library: ''
-public_folder: '/assets'
+media_folder: 'public/media_folder'
+media_library: 'public/media_library'
+public_folder: '/public'
 collections: []
