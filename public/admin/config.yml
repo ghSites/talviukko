@@ -2,22 +2,25 @@ backend:
   name: github
   repo: talvi-ukko/talvi-ukko.github.io
   branch: main
+  squash_merges: true
+  open_authoring: true
 
-media_folder: 'public/media_folder'
-media_library:
-    config:
-      multiple: true
-
-public_folder: '/public'
+publish_mode: editorial_workflow
+media_folder: public/images
+public_folder: /images
+site_url: "https://talvi-ukko.github.io/admin/#/"
 
 collections:
-    - programs:
-        name: 'programs',
-        label: 'Programs',
-        folder: 'pages/programs',
-        create: true,
-        fields:
-          - name: 'title', label: 'Title', widget: 'string'
-          - name: 'date', label: 'Date', widget: 'datetime'
-          - name: 'author', label: 'Author', widget: 'string'
-          - name: 'body', label: 'Body', widget: 'markdown'
+  - name: post
+    label: Posts
+    folder: src/content/posts
+    create: true
+    format: frontmatter
+    preview_path: post/{{slug}}
+    fields:
+      - { name: title, label: Title }
+      - { name: description, label: Description }
+      - { name: price, label: Price }
+      - { name: time, label: Time }
+      - { name: draft, label: "Draft",  widget: "boolean", default: false}
+      - { name: body, label: Body, widget: markdown }
