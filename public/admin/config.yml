@@ -4,6 +4,20 @@ backend:
   branch: main
 
 media_folder: 'public/media_folder'
-media_library: 'public/media_library'
+media_library:
+    config:
+      multiple: true
+
 public_folder: '/public'
-collections: []
+
+collections:
+    - programs:
+        name: 'programs',
+        label: 'Programs',
+        folder: 'pages/programs',
+        create: true,
+        fields:
+          - name: 'title', label: 'Title', widget: 'string'
+          - name: 'date', label: 'Date', widget: 'datetime'
+          - name: 'author', label: 'Author', widget: 'string'
+          - name: 'body', label: 'Body', widget: 'markdown'
