@@ -1,0 +1,4 @@
+backend:
+  name: github
+  repo: ghSites/talviukko
+  branch: main
