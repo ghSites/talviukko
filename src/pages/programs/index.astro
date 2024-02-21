@@ -2,7 +2,9 @@
 // @ts-ignore
 import Layout from '@layouts/Layout.astro';
 import ProgramCard from '../../components/ProgramCard/ProgramCard.astro';
-const mdxs = await Astro.glob('@pages/programs/**/*.mdx');
+let mdxs = await Astro.glob('@pages/programs/**/*.mdx');
+mdxs = mdxs.filter((post) => !post.frontmatter.draft);
+
 export const title = 'Программы'
 ---
 <Layout>
