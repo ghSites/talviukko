@@ -1,0 +1,18 @@
+---
+// @ts-ignore
+import Layout from '@layouts/Layout.astro';
+import ProgramCard from '../../components/ProgramCard/ProgramCard.astro';
+const mdxs = await Astro.glob('@pages/programs/**/*.mdx');
+export const title = 'Программы'
+---
+<Layout>
+	<div>
+		{mdxs.map((mdx) => (
+			<article>
+				<ProgramCard mdx={mdx} kk={4} />
+				<mdx.Content />
+				<hr />
+			</article>
+		))}
+	  </div>
+</Layout>

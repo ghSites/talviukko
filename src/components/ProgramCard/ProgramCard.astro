@@ -1,0 +1,17 @@
+---
+let props = Astro.props;
+---
+
+
+<h1>{props.mdx.frontmatter.title}</h1>
+
+<dl>
+	<dd>Сезон:</dd>             <dt>{props.mdx.frontmatter.season_winter && 'Зима'} {props.mdx.frontmatter.season_summer && 'Лето'}</dt>
+	<dd>Стоимость:</dd>         <dt>{props.mdx.frontmatter.price}</dt>
+	<dd>Продолжительность:</dd> <dt>{props.mdx.frontmatter.time}</dt>
+</dl>
+
+<h3>В программе:</h3>
+<ul>
+	{props.mdx.frontmatter.program.map(el => <li>{el}</li>)}
+</ul>
