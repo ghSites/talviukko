@@ -1,4 +1,4 @@
 backend:
-  name: github
-  repo: ghSites/talviukko
+  name: git-gateway
+  repo: talvi-ukko/talvi-ukko.github.io
   branch: main
