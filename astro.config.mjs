@@ -13,5 +13,9 @@ export default defineConfig({
     open: "/programs",
   },
 
+  markdown: {
+    drafts: true,
+  },
+
   integrations: [mdx()]
 });
