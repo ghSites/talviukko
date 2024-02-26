@@ -1,4 +1,5 @@
 ## Стек
+
 ```yaml
 stack:
 	- DB:  'SQLite3'  # Multiple tables per data source (ALPR, axle count, class, RFID, etc.)
@@ -7,6 +8,7 @@ stack:
 ```
 
 #### DB: общая структура основных таблиц<br/>(источники: ALPR, axle count, class, RFID, etc.)
+
 ```yaml
 tables:
 	- id
@@ -19,6 +21,7 @@ tables:
 ```
 
 #### API: основной функционал
+
 ```yaml
 api:
 	- Запись/Вывод данныхх из базы.
