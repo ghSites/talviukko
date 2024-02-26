@@ -10,7 +10,7 @@ program:
     - One
     - Two
     - Three
-draft: true
+draft: false
 ---
 
 ## Зимняя программа «Легенды Севера"
