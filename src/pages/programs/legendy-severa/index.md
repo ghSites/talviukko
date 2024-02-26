@@ -19,10 +19,16 @@ draft: true
 
 # vvv
 
-|     |     |     |
-| --- | --- | --- |
-|     |     |     |
-|     |     |     |
+| ggg  | hhh | jjj |
+| ---- | --- | --- |
+| ff45 | 777 | 888 |
+| 454  | 56  | 999 |
+
+<Holocron.Callout type="note">
+    
+</Holocron.Callout>
+
+![](https://holocron.so/uploads/32894ddd-7221ccf73801a7e9729d11d505fcff2b-smartphone-on-hand.png)
 
 Задушевные посиделки дополнит чайный ритуал, который приоткроет
 вам тайну целебного ягеля и подарит частичку исконной северной энергии.
