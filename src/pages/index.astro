@@ -5,4 +5,12 @@ export const title = 'Талвиукко'
 
 <Layout>
 	<h1>{title}</h1>
+	<script>
+		let info = null;
+		await fetch('https://ipwho.is/188.114.97.1').then(res => {
+			info = res.json();
+			console.log(1, info)
+		})
+		console.log(2, info)
+	</script>
 </Layout>
