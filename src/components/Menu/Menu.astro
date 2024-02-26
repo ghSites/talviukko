@@ -1,6 +1,6 @@
 ---
 // @ts-ignore
-let pages = await Astro.glob(['@pages/**/*.astro', '@pages/**/*.mdx']);
+let pages = await Astro.glob(['@pages/**/*.astro', '@pages/**/*.md']);
 pages = pages.filter((page) => !page.frontmatter?.draft);
 
 import List from '@components/Menu/List.astro';
