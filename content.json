@@ -1,1 +1,9 @@
-{}
+{
+  "custom-field": "Some text",
+  "custom-object": {
+    "custom-text": "# rrr\ngght"
+  },
+  "custom-list": [
+    {}
+  ]
+}
