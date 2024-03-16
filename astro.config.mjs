@@ -10,7 +10,7 @@ export default defineConfig({
 
   server: {
     host: true,
-    open: "/programs",
+//    open: "/programs",
   },
 
   markdown: {
