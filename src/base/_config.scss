@@ -4,8 +4,12 @@ $line     : 1.5;
 $bl       : $line*$rem;
 
 // ------ LAYOUT
-$layMax   : 1344px;
-$layGap   : 48px;
+$layMax   : 100vw;
+// $layMax   : 360px;
+// $layMax   : 1344px;
+// $layMax   : 1057px;
+// $layGap   : 48px;
+$layGap   : 16px;
 // $layMax   : 1076px;
 // $layGap   : 39px;
 
@@ -13,9 +17,10 @@ $layGap   : 48px;
 //$layGap   : $layGap * 4 / 5;
 
 // ------ GRID
-$gapFix   : 48px;
+// $gapFix   : 48px;
+$gapFix   : 0px;
 //$gapFix   : $gapFix * 4 / 5;
-$gapFlu   : 4%;
+$gapFlu   : 0%;
 // ------ COLORS / FONTS
 $red      : #e74c3c;
 $green    : #2ecc71;
